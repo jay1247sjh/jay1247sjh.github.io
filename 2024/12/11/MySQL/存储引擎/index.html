@@ -1,0 +1,188 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>存储引擎 | Space for Mr.su</title><meta name="author" content="su"><meta name="copyright" content="su"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="连接层主要是接收客户端的连接，完成用户名和密码的校验，或者是权限的检验之类的 MySQL5.5之后默认存储引擎为InnoDB   如果没有指定引擎，则默认为InnoDB  查看所有引擎，最后三个都是与事务有关的 MEMORY引擎存储信息在内存中 123456&#x2F;&#x2F;创建存储引擎为MyISAM的表create table my_myisam(    id   int,    name varchar(">
+<meta property="og:type" content="article">
+<meta property="og:title" content="存储引擎">
+<meta property="og:url" content="http://localhost:4000/2024/12/11/MySQL/%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E/index.html">
+<meta property="og:site_name" content="Space for Mr.su">
+<meta property="og:description" content="连接层主要是接收客户端的连接，完成用户名和密码的校验，或者是权限的检验之类的 MySQL5.5之后默认存储引擎为InnoDB   如果没有指定引擎，则默认为InnoDB  查看所有引擎，最后三个都是与事务有关的 MEMORY引擎存储信息在内存中 123456&#x2F;&#x2F;创建存储引擎为MyISAM的表create table my_myisam(    id   int,    name varchar(">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://localhost:4000/img/avatar.jpg">
+<meta property="article:published_time" content="2024-12-11T15:41:52.000Z">
+<meta property="article:modified_time" content="2024-12-12T17:19:14.553Z">
+<meta property="article:author" content="su">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://localhost:4000/img/avatar.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://localhost:4000/2024/12/11/MySQL/%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '存储引擎',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: false,
+  isShuoshuo: false
+}</script><link rel="stylesheet" href="/css/background.css"><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">1070</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">18</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> 生活</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/shuoshuo/"><i class="fa-fw fa fa-comments-o"></i><span> 分享</span></a></li><li><a class="site-page child" href="/photos/"><i class="fa-fw fa fa-camera-retro"></i><span> 相册</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 影视</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Space for Mr.su</span></a><a class="nav-page-title" href="/"><span class="site-name">存储引擎</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> 生活</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/shuoshuo/"><i class="fa-fw fa fa-comments-o"></i><span> 分享</span></a></li><li><a class="site-page child" href="/photos/"><i class="fa-fw fa fa-camera-retro"></i><span> 相册</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 影视</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">存储引擎</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-12-11T15:41:52.000Z" title="发表于 2024-12-11 23:41:52">2024-12-11</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-12-12T17:19:14.553Z" title="更新于 2024-12-13 01:19:14">2024-12-13</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/MySQL/">MySQL</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">352</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>1分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p><img src="/images/WEBRESOURCE950705538c716c385db1cbe6527611cb%E6%88%AA%E5%9B%BE.png"></p>
+<p><strong>连接层主要是接收客户端的连接，完成用户名和密码的校验，或者是权限的检验之类的</strong></p>
+<p><strong>MySQL5.5之后默认存储引擎为InnoDB</strong></p>
+<p><img src="/images/WEBRESOURCE65263295b37bfa78a0c045fa4149bddd%E6%88%AA%E5%9B%BE.png"></p>
+<p><img src="/images/WEBRESOURCE92522610c9ac91a1a94463adb6316e4e%E6%88%AA%E5%9B%BE.png"></p>
+<p><strong>如果没有指定引擎，则默认为InnoDB</strong></p>
+<p><img src="/images/WEBRESOURCE3a8d62a68b81e890c2a5d1c9c3c822bf%E6%88%AA%E5%9B%BE.png"></p>
+<p><strong>查看所有引擎，最后三个都是与事务有关的</strong></p>
+<p><strong>MEMORY引擎存储信息在内存中</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">/</span><span class="operator">/</span>创建存储引擎为MyISAM的表</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> my_myisam</span><br><span class="line">(</span><br><span class="line">    id   <span class="type">int</span>,</span><br><span class="line">    name <span class="type">varchar</span>(<span class="number">10</span>)</span><br><span class="line">) engine <span class="operator">=</span> MyISAM;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/WEBRESOURCEa42cb148c537770bd491b1ff1b827853%E6%88%AA%E5%9B%BE.png"></p>
+<p><strong>ACID为事务的四个特性</strong></p>
+<p><strong>frm在MySQL8.0存储进sdi中，sdi融进了ibd中</strong></p>
+<p><strong>表空间文件包括数据、结构、索引，MySQL8.0打开了innodb_file_per_table，代表每一张表对应一个表空间</strong></p>
+<p><img src="/images/WEBRESOURCEe68c7dbbb13ee3de88797c9ab3862fc6%E6%88%AA%E5%9B%BE.png"></p>
+<p><strong>ON代表innodb_file_per_table开着</strong></p>
+<p><img src="/images/WEBRESOURCE78d85f41330919cdef14a851c48d0129%E6%88%AA%E5%9B%BE.png"></p>
+<p><img src="/images/WEBRESOURCEbd2f536a600c1d8cd0b15c7903ea8c1a%E6%88%AA%E5%9B%BE.png"></p>
+<p><strong>可以发现每一张表都对应一个ibd文件，记录着结构、数据、索引</strong></p>
+<p><img src="/images/WEBRESOURCE2ff4534246a3f16a5dbcb18677eea43c%E6%88%AA%E5%9B%BE.png"></p>
+<p><strong>在指定文件夹打开cmd，可以直接获取当前路径</strong></p>
+<p><img src="/images/WEBRESOURCE434c256a8e08df06fc5856e2f14a6acc%E6%88%AA%E5%9B%BE.png"></p>
+<p><strong>查看ibd文件的sdi表结构（orders是表名）</strong></p>
+<p><img src="/images/WEBRESOURCEfafdec265572eccf87d43862916aef5e%E6%88%AA%E5%9B%BE.png"></p>
+<p><strong>图书馆-&gt;书架-&gt;书本-&gt;书页-&gt;一行字-&gt;一个字</strong></p>
+<p><strong>一个Row为磁盘操作的最小单位，一个区的大小固定为一MB，一个Page的大小固定为16KB，一个Extent包含64个Page</strong></p>
+<p><strong>Page是InnoDB磁盘管理最小单元</strong></p>
+<p><img src="/images/WEBRESOURCE2209bd5be0e494e5c43f8e31df79357f%E6%88%AA%E5%9B%BE.png"></p>
+<p><img src="/images/WEBRESOURCE8e66aafceac178f22921ed67b7e90ef8%E6%88%AA%E5%9B%BE.png"></p>
+<p><strong>sdi代表表结构的存放文件，MYD存放数据，MYI存放索引</strong></p>
+<p><img src="/images/WEBRESOURCE3216ab410f699fc91c31a6a1f8614824%E6%88%AA%E5%9B%BE.png"></p>
+<p><img src="/images/WEBRESOURCE88bd0613014062adb5bce5b6e2d7fd6a%E6%88%AA%E5%9B%BE.png"></p>
+<p><strong>登录Json.cn格式化之后可以很清晰地看到表结构</strong></p>
+<p><img src="/images/WEBRESOURCE2256057a0d6cefe577bc4c7688dc3941%E6%88%AA%E5%9B%BE.png"></p>
+<p><img src="/images/WEBRESOURCEc746b96c3fb9519d12afae2caabe694a%E6%88%AA%E5%9B%BE.png"></p>
+<p><strong>Memory只有一个sdi文件，因为数据是存放在内存中的</strong></p>
+<p><img src="/images/WEBRESOURCEe3e198defea82c75582bf3c0ce43ccbb%E6%88%AA%E5%9B%BE.png"></p>
+<p><img src="/images/WEBRESOURCEf71cfb371a79a3821a2975b8698b208e%E6%88%AA%E5%9B%BE.png"></p>
+<p><img src="/images/WEBRESOURCE7ef94b4b9624bbc84d519420aa6ac1f7%E6%88%AA%E5%9B%BE.png"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://localhost:4000">su</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://localhost:4000/2024/12/11/MySQL/%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E/">http://localhost:4000/2024/12/11/MySQL/存储引擎/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://localhost:4000" target="_blank">Space for Mr.su</a>！</span></div></div><div class="tag_share"><div class="post-share"><div class="social-share" data-image="/img/avatar.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i>赞助</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.png" target="_blank"><img class="post-qr-code-img" src="/img/wechat.png" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li></ul></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2024/12/11/MySQL/%E5%AD%98%E5%82%A8%E5%87%BD%E6%95%B0/" title="存储函数"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">存储函数</div></div><div class="info-2"><div class="info-item-1">   12345678910111213141516171819202122create function fun(n int)    returns int    deterministic        //指定特性begin    declare total int default 0;    //loop循环    sum:    loop        if n &lt;= 0 then            leave sum;        end if;        set total := total + n;        set n := n - 1;    end loop;    return total;        //必须有返回值，如果不含返回值则return nullend;//set @result = fun(100)也可以select fun(100)into @result;select @result;        //5050</div></div></div></a><a class="pagination-related" href="/2024/12/11/MySQL/%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B%E3%80%81%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B%E5%8F%98%E9%87%8F/" title="存储过程、存储过程变量"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">存储过程、存储过程变量</div></div><div class="info-2"><div class="info-item-1">   12345678//p是过程吗，过程的SQL语句要写在begin与end之间create procedure p()begin    select count(*) from student;end;//调用过程call p();   当创建成功的时候，在当前数据库会出现一个routines（例程）  1234//查看many_to_many数据库所有的存储过程及状态信息select *from information_schema.routineswhere routine_schema = &#x27;many_to_many&#x27;;   12//查询单个存储过程的定义show create procedure p;   12//删除存储过程drop procedure if exists...</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">su</div><div class="author-info-description">苦行僧和初学者 弄不懂的谜语锁</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">1070</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">18</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/jay1247sjh"><i class="fab fa-github"></i><span>我的Github</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/jay1247sjh" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="https://space.bilibili.com/364753914" target="_blank" title="Bilibili"><i class="fa fa-book-open"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">这里是苏苏的个人空间😘</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/12/11/Algorithm/B%E6%A0%91/" title="B树">B树</a><time datetime="2024-12-11T15:41:52.000Z" title="发表于 2024-12-11 23:41:52">2024-12-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/12/11/Algorithm/Avl%E6%A0%91/" title="Avl树">Avl树</a><time datetime="2024-12-11T15:41:52.000Z" title="发表于 2024-12-11 23:41:52">2024-12-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/12/11/Algorithm/DFS%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/" title="DFS深度优先搜索">DFS深度优先搜索</a><time datetime="2024-12-11T15:41:52.000Z" title="发表于 2024-12-11 23:41:52">2024-12-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/12/11/Algorithm/%E4%B8%B2/" title="串">串</a><time datetime="2024-12-11T15:41:52.000Z" title="发表于 2024-12-11 23:41:52">2024-12-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/12/11/Algorithm/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" title="二分查找">二分查找</a><time datetime="2024-12-11T15:41:52.000Z" title="发表于 2024-12-11 23:41:52">2024-12-11</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2024 By su</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

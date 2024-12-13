@@ -1,0 +1,564 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Space for Mr.su | Space for Mr.su</title><meta name="author" content="su"><meta name="copyright" content="su"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Redis集群本章是基于CentOS7下的Redis集群教程，包括：  单机安装Redis Redis主从 Redis分片集群  1.单机安装Redis首先需要安装Redis所需要的依赖： 1yum install -y gcc tcl    然后将课前资料提供的Redis安装包上传到虚拟机的任意目录：   例如，我放到了&#x2F;tmp目录：   解压缩： 1tar -xzf redis-6.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Space for Mr.su">
+<meta property="og:url" content="http://localhost:4000/attachments/WEBRESOURCE8c499c06adb340f13ddd83a07c3e5d05Redis%E9%9B%86%E7%BE%A4.html">
+<meta property="og:site_name" content="Space for Mr.su">
+<meta property="og:description" content="Redis集群本章是基于CentOS7下的Redis集群教程，包括：  单机安装Redis Redis主从 Redis分片集群  1.单机安装Redis首先需要安装Redis所需要的依赖： 1yum install -y gcc tcl    然后将课前资料提供的Redis安装包上传到虚拟机的任意目录：   例如，我放到了&#x2F;tmp目录：   解压缩： 1tar -xzf redis-6.">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://localhost:4000/img/avatar.jpg">
+<meta property="article:published_time" content="2024-12-12T17:31:07.004Z">
+<meta property="article:modified_time" content="2024-12-12T09:07:03.351Z">
+<meta property="article:author" content="su">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://localhost:4000/img/avatar.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://localhost:4000/attachments/WEBRESOURCE8c499c06adb340f13ddd83a07c3e5d05Redis%E9%9B%86%E7%BE%A4.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Space for Mr.su',
+  isPost: false,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: false,
+  isShuoshuo: false
+}</script><link rel="stylesheet" href="/css/background.css"><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">1070</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">18</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> 生活</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/shuoshuo/"><i class="fa-fw fa fa-comments-o"></i><span> 分享</span></a></li><li><a class="site-page child" href="/photos/"><i class="fa-fw fa fa-camera-retro"></i><span> 相册</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 影视</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="not-home-page" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Space for Mr.su</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> 生活</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/shuoshuo/"><i class="fa-fw fa fa-comments-o"></i><span> 分享</span></a></li><li><a class="site-page child" href="/photos/"><i class="fa-fw fa fa-camera-retro"></i><span> 相册</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 影视</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="page-site-info"><h1 id="site-title"></h1></div></header><main class="layout" id="content-inner"><div id="page"><div class="container" id="article-container"><h1 id="Redis集群"><a href="#Redis集群" class="headerlink" title="Redis集群"></a>Redis集群</h1><p>本章是基于CentOS7下的Redis集群教程，包括：</p>
+<ul>
+<li>单机安装Redis</li>
+<li>Redis主从</li>
+<li>Redis分片集群</li>
+</ul>
+<h1 id="1-单机安装Redis"><a href="#1-单机安装Redis" class="headerlink" title="1.单机安装Redis"></a>1.单机安装Redis</h1><p>首先需要安装Redis所需要的依赖：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y gcc tcl</span><br></pre></td></tr></table></figure>
+
+
+
+<p>然后将课前资料提供的Redis安装包上传到虚拟机的任意目录：</p>
+
+
+<p>例如，我放到了&#x2F;tmp目录：</p>
+
+
+<p>解压缩：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -xzf redis-6.2.4.tar.gz</span><br></pre></td></tr></table></figure>
+
+<p>解压后：</p>
+
+
+<p>进入redis目录：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> redis-6.2.4</span><br></pre></td></tr></table></figure>
+
+
+
+<p>运行编译命令：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+
+<p>如果没有出错，应该就安装成功了。</p>
+<p>然后修改redis.conf文件中的一些配置：</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 绑定地址，默认是127.0.0.1，会导致只能在本地访问。修改为0.0.0.0则可以在任意IP访问</span></span><br><span class="line"><span class="attr">bind</span> <span class="string">0.0.0.0</span></span><br><span class="line"><span class="comment"># 保护模式，关闭保护模式</span></span><br><span class="line"><span class="attr">protected-mode</span> <span class="string">no</span></span><br><span class="line"><span class="comment"># 数据库数量，设置为1</span></span><br><span class="line"><span class="attr">databases</span> <span class="string">1</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>启动Redis：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis-server redis.conf</span><br></pre></td></tr></table></figure>
+
+<p>停止redis服务：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis-cli shutdown</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<h1 id="2-Redis主从集群"><a href="#2-Redis主从集群" class="headerlink" title="2.Redis主从集群"></a>2.Redis主从集群</h1><h2 id="2-1-集群结构"><a href="#2-1-集群结构" class="headerlink" title="2.1.集群结构"></a>2.1.集群结构</h2><p>我们搭建的主从集群结构如图：</p>
+
+
+<p>共包含三个节点，一个主节点，两个从节点。</p>
+<p>这里我们会在同一台虚拟机中开启3个redis实例，模拟主从集群，信息如下：</p>
+<table>
+<thead>
+<tr>
+<th align="center">IP</th>
+<th align="center">PORT</th>
+<th align="center">角色</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">192.168.150.101</td>
+<td align="center">7001</td>
+<td align="center">master</td>
+</tr>
+<tr>
+<td align="center">192.168.150.101</td>
+<td align="center">7002</td>
+<td align="center">slave</td>
+</tr>
+<tr>
+<td align="center">192.168.150.101</td>
+<td align="center">7003</td>
+<td align="center">slave</td>
+</tr>
+</tbody></table>
+<h2 id="2-2-准备实例和配置"><a href="#2-2-准备实例和配置" class="headerlink" title="2.2.准备实例和配置"></a>2.2.准备实例和配置</h2><p>要在同一台虚拟机开启3个实例，必须准备三份不同的配置文件和目录，配置文件所在目录也就是工作目录。</p>
+<p>1）创建目录</p>
+<p>我们创建三个文件夹，名字分别叫7001、7002、7003：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 进入/tmp目录</span></span><br><span class="line"><span class="built_in">cd</span> /tmp</span><br><span class="line"><span class="comment"># 创建目录</span></span><br><span class="line"><span class="built_in">mkdir</span> 7001 7002 7003</span><br></pre></td></tr></table></figure>
+
+<p>如图：</p>
+
+
+<p>2）恢复原始配置</p>
+<p>修改redis-6.2.4&#x2F;redis.conf文件，将其中的持久化模式改为默认的RDB模式，AOF保持关闭状态。</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 开启RDB</span></span><br><span class="line"><span class="comment"># save &quot;&quot;</span></span><br><span class="line"><span class="attr">save</span> <span class="string">3600 1</span></span><br><span class="line"><span class="attr">save</span> <span class="string">300 100</span></span><br><span class="line"><span class="attr">save</span> <span class="string">60 10000</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"># 关闭AOF</span></span><br><span class="line"><span class="attr">appendonly</span> <span class="string">no</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>3）拷贝配置文件到每个实例目录</p>
+<p>然后将redis-6.2.4&#x2F;redis.conf文件拷贝到三个目录中（在&#x2F;tmp目录执行下列命令）：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 方式一：逐个拷贝</span></span><br><span class="line"><span class="built_in">cp</span> redis-6.2.4/redis.conf 7001</span><br><span class="line"><span class="built_in">cp</span> redis-6.2.4/redis.conf 7002</span><br><span class="line"><span class="built_in">cp</span> redis-6.2.4/redis.conf 7003</span><br><span class="line"></span><br><span class="line"><span class="comment"># 方式二：管道组合命令，一键拷贝</span></span><br><span class="line"><span class="built_in">echo</span> 7001 7002 7003 | xargs -t -n 1 <span class="built_in">cp</span> redis-6.2.4/redis.conf</span><br></pre></td></tr></table></figure>
+
+
+
+<p>4）修改每个实例的端口、工作目录</p>
+<p>修改每个文件夹内的配置文件，将端口分别修改为7001、7002、7003，将rdb文件保存位置都修改为自己所在目录（在&#x2F;tmp目录执行下列命令）：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sed -i -e <span class="string">&#x27;s/6379/7001/g&#x27;</span> -e <span class="string">&#x27;s/dir .\//dir \/tmp\/7001\//g&#x27;</span> 7001/redis.conf</span><br><span class="line">sed -i -e <span class="string">&#x27;s/6379/7002/g&#x27;</span> -e <span class="string">&#x27;s/dir .\//dir \/tmp\/7002\//g&#x27;</span> 7002/redis.conf</span><br><span class="line">sed -i -e <span class="string">&#x27;s/6379/7003/g&#x27;</span> -e <span class="string">&#x27;s/dir .\//dir \/tmp\/7003\//g&#x27;</span> 7003/redis.conf</span><br></pre></td></tr></table></figure>
+
+
+
+<p>5）修改每个实例的声明IP</p>
+<p>虚拟机本身有多个IP，为了避免将来混乱，我们需要在redis.conf文件中指定每一个实例的绑定ip信息，格式如下：</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># redis实例的声明 IP</span></span><br><span class="line"><span class="attr">replica-announce-ip</span> <span class="string">192.168.150.101</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>每个目录都要改，我们一键完成修改（在&#x2F;tmp目录执行下列命令）：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 逐一执行</span></span><br><span class="line">sed -i <span class="string">&#x27;1a replica-announce-ip 192.168.150.101&#x27;</span> 7001/redis.conf</span><br><span class="line">sed -i <span class="string">&#x27;1a replica-announce-ip 192.168.150.101&#x27;</span> 7002/redis.conf</span><br><span class="line">sed -i <span class="string">&#x27;1a replica-announce-ip 192.168.150.101&#x27;</span> 7003/redis.conf</span><br><span class="line"></span><br><span class="line"><span class="comment"># 或者一键修改</span></span><br><span class="line"><span class="built_in">printf</span> <span class="string">&#x27;%s\n&#x27;</span> 7001 7002 7003 | xargs -I&#123;&#125; -t sed -i <span class="string">&#x27;1a replica-announce-ip 192.168.150.101&#x27;</span> &#123;&#125;/redis.conf</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<h2 id="2-3-启动"><a href="#2-3-启动" class="headerlink" title="2.3.启动"></a>2.3.启动</h2><p>为了方便查看日志，我们打开3个ssh窗口，分别启动3个redis实例，启动命令：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 第1个</span></span><br><span class="line">redis-server 7001/redis.conf</span><br><span class="line"><span class="comment"># 第2个</span></span><br><span class="line">redis-server 7002/redis.conf</span><br><span class="line"><span class="comment"># 第3个</span></span><br><span class="line">redis-server 7003/redis.conf</span><br></pre></td></tr></table></figure>
+
+
+
+<p>启动后：</p>
+
+
+
+
+
+
+<p>如果要一键停止，可以运行下面命令：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">printf</span> <span class="string">&#x27;%s\n&#x27;</span> 7001 7002 7003 | xargs -I&#123;&#125; -t redis-cli -p &#123;&#125; shutdown</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="2-4-开启主从关系"><a href="#2-4-开启主从关系" class="headerlink" title="2.4.开启主从关系"></a>2.4.开启主从关系</h2><p>现在三个实例还没有任何关系，要配置主从可以使用replicaof 或者slaveof（5.0以前）命令。</p>
+<p>有临时和永久两种模式：</p>
+<ul>
+<li><p>修改配置文件（永久生效）</p>
+<ul>
+<li>在redis.conf中添加一行配置：<code>slaveof &lt;masterip&gt; &lt;masterport&gt;</code></li>
+</ul>
+</li>
+<li><p>使用redis-cli客户端连接到redis服务，执行slaveof命令（重启后失效）：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">slaveof &lt;masterip&gt; &lt;masterport&gt;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p><strong><font color="red">注意</font></strong>：在5.0以后新增命令replicaof，与salveof效果一致。</p>
+<p>这里我们为了演示方便，使用方式二。</p>
+<p>通过redis-cli命令连接7002，执行下面命令：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 连接 7002</span></span><br><span class="line">redis-cli -p 7002</span><br><span class="line"><span class="comment"># 执行slaveof</span></span><br><span class="line">slaveof 192.168.150.101 7001</span><br></pre></td></tr></table></figure>
+
+
+
+<p>通过redis-cli命令连接7003，执行下面命令：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 连接 7003</span></span><br><span class="line">redis-cli -p 7003</span><br><span class="line"><span class="comment"># 执行slaveof</span></span><br><span class="line">slaveof 192.168.150.101 7001</span><br></pre></td></tr></table></figure>
+
+
+
+<p>然后连接 7001节点，查看集群状态：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 连接 7001</span></span><br><span class="line">redis-cli -p 7001</span><br><span class="line"><span class="comment"># 查看状态</span></span><br><span class="line">info replication</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+
+
+
+
+<h2 id="2-5-测试"><a href="#2-5-测试" class="headerlink" title="2.5.测试"></a>2.5.测试</h2><p>执行下列操作以测试：</p>
+<ul>
+<li><p>利用redis-cli连接7001，执行<code>set num 123</code></p>
+</li>
+<li><p>利用redis-cli连接7002，执行<code>get num</code>，再执行<code>set num 666</code></p>
+</li>
+<li><p>利用redis-cli连接7003，执行<code>get num</code>，再执行<code>set num 888</code></p>
+</li>
+</ul>
+<p>可以发现，只有在7001这个master节点上可以执行写操作，7002和7003这两个slave节点只能执行读操作。</p>
+<h1 id="3-搭建哨兵集群"><a href="#3-搭建哨兵集群" class="headerlink" title="3.搭建哨兵集群"></a>3.搭建哨兵集群</h1><h2 id="3-1-集群结构"><a href="#3-1-集群结构" class="headerlink" title="3.1.集群结构"></a>3.1.集群结构</h2><p>这里我们搭建一个三节点形成的Sentinel集群，来监管之前的Redis主从集群。如图：</p>
+
+
+
+
+<p>三个sentinel实例信息如下：</p>
+<table>
+<thead>
+<tr>
+<th>节点</th>
+<th align="center">IP</th>
+<th align="center">PORT</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>s1</td>
+<td align="center">192.168.150.101</td>
+<td align="center">27001</td>
+</tr>
+<tr>
+<td>s2</td>
+<td align="center">192.168.150.101</td>
+<td align="center">27002</td>
+</tr>
+<tr>
+<td>s3</td>
+<td align="center">192.168.150.101</td>
+<td align="center">27003</td>
+</tr>
+</tbody></table>
+<h2 id="3-2-准备实例和配置"><a href="#3-2-准备实例和配置" class="headerlink" title="3.2.准备实例和配置"></a>3.2.准备实例和配置</h2><p>要在同一台虚拟机开启3个实例，必须准备三份不同的配置文件和目录，配置文件所在目录也就是工作目录。</p>
+<p>我们创建三个文件夹，名字分别叫s1、s2、s3：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 进入/tmp目录</span></span><br><span class="line"><span class="built_in">cd</span> /tmp</span><br><span class="line"><span class="comment"># 创建目录</span></span><br><span class="line"><span class="built_in">mkdir</span> s1 s2 s3</span><br></pre></td></tr></table></figure>
+
+<p>如图：</p>
+
+
+<p>然后我们在s1目录创建一个sentinel.conf文件，添加下面的内容：</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">port 27001</span><br><span class="line">sentinel announce-ip 192.168.150.101</span><br><span class="line">sentinel monitor mymaster 192.168.150.101 7001 2</span><br><span class="line">sentinel down-after-milliseconds mymaster 5000</span><br><span class="line">sentinel failover-timeout mymaster 60000</span><br><span class="line">dir &quot;/tmp/s1&quot;</span><br></pre></td></tr></table></figure>
+
+<p>解读：</p>
+<ul>
+<li><code>port 27001</code>：是当前sentinel实例的端口</li>
+<li><code>sentinel monitor mymaster 192.168.150.101 7001 2</code>：指定主节点信息<ul>
+<li><code>mymaster</code>：主节点名称，自定义，任意写</li>
+<li><code>192.168.150.101 7001</code>：主节点的ip和端口</li>
+<li><code>2</code>：选举master时的quorum值</li>
+</ul>
+</li>
+</ul>
+<p>然后将s1&#x2F;sentinel.conf文件拷贝到s2、s3两个目录中（在&#x2F;tmp目录执行下列命令）：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 方式一：逐个拷贝</span></span><br><span class="line"><span class="built_in">cp</span> s1/sentinel.conf s2</span><br><span class="line"><span class="built_in">cp</span> s1/sentinel.conf s3</span><br><span class="line"><span class="comment"># 方式二：管道组合命令，一键拷贝</span></span><br><span class="line"><span class="built_in">echo</span> s2 s3 | xargs -t -n 1 <span class="built_in">cp</span> s1/sentinel.conf</span><br></pre></td></tr></table></figure>
+
+
+
+<p>修改s2、s3两个文件夹内的配置文件，将端口分别修改为27002、27003：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sed -i -e <span class="string">&#x27;s/27001/27002/g&#x27;</span> -e <span class="string">&#x27;s/s1/s2/g&#x27;</span> s2/sentinel.conf</span><br><span class="line">sed -i -e <span class="string">&#x27;s/27001/27003/g&#x27;</span> -e <span class="string">&#x27;s/s1/s3/g&#x27;</span> s3/sentinel.conf</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="3-3-启动"><a href="#3-3-启动" class="headerlink" title="3.3.启动"></a>3.3.启动</h2><p>为了方便查看日志，我们打开3个ssh窗口，分别启动3个redis实例，启动命令：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 第1个</span></span><br><span class="line">redis-sentinel s1/sentinel.conf</span><br><span class="line"><span class="comment"># 第2个</span></span><br><span class="line">redis-sentinel s2/sentinel.conf</span><br><span class="line"><span class="comment"># 第3个</span></span><br><span class="line">redis-sentinel s3/sentinel.conf</span><br></pre></td></tr></table></figure>
+
+
+
+<p>启动后：</p>
+
+
+
+
+<h2 id="3-4-测试"><a href="#3-4-测试" class="headerlink" title="3.4.测试"></a>3.4.测试</h2><p>尝试让master节点7001宕机，查看sentinel日志：</p>
+
+
+<p>查看7003的日志：</p>
+
+
+<p>查看7002的日志：</p>
+
+
+
+
+<h1 id="4-搭建分片集群"><a href="#4-搭建分片集群" class="headerlink" title="4.搭建分片集群"></a>4.搭建分片集群</h1><h2 id="4-1-集群结构"><a href="#4-1-集群结构" class="headerlink" title="4.1.集群结构"></a>4.1.集群结构</h2><p>分片集群需要的节点数量较多，这里我们搭建一个最小的分片集群，包含3个master节点，每个master包含一个slave节点，结构如下：</p>
+
+
+
+
+<p>这里我们会在同一台虚拟机中开启6个redis实例，模拟分片集群，信息如下：</p>
+<table>
+<thead>
+<tr>
+<th align="center">IP</th>
+<th align="center">PORT</th>
+<th align="center">角色</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">192.168.150.101</td>
+<td align="center">7001</td>
+<td align="center">master</td>
+</tr>
+<tr>
+<td align="center">192.168.150.101</td>
+<td align="center">7002</td>
+<td align="center">master</td>
+</tr>
+<tr>
+<td align="center">192.168.150.101</td>
+<td align="center">7003</td>
+<td align="center">master</td>
+</tr>
+<tr>
+<td align="center">192.168.150.101</td>
+<td align="center">8001</td>
+<td align="center">slave</td>
+</tr>
+<tr>
+<td align="center">192.168.150.101</td>
+<td align="center">8002</td>
+<td align="center">slave</td>
+</tr>
+<tr>
+<td align="center">192.168.150.101</td>
+<td align="center">8003</td>
+<td align="center">slave</td>
+</tr>
+</tbody></table>
+<h2 id="4-2-准备实例和配置"><a href="#4-2-准备实例和配置" class="headerlink" title="4.2.准备实例和配置"></a>4.2.准备实例和配置</h2><p>删除之前的7001、7002、7003这几个目录，重新创建出7001、7002、7003、8001、8002、8003目录：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 进入/tmp目录</span></span><br><span class="line"><span class="built_in">cd</span> /tmp</span><br><span class="line"><span class="comment"># 删除旧的，避免配置干扰</span></span><br><span class="line"><span class="built_in">rm</span> -rf 7001 7002 7003</span><br><span class="line"><span class="comment"># 创建目录</span></span><br><span class="line"><span class="built_in">mkdir</span> 7001 7002 7003 8001 8002 8003</span><br></pre></td></tr></table></figure>
+
+
+
+<p>在&#x2F;tmp下准备一个新的redis.conf文件，内容如下：</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">port 6379</span><br><span class="line"><span class="comment"># 开启集群功能</span></span><br><span class="line">cluster-enabled yes</span><br><span class="line"><span class="comment"># 集群的配置文件名称，不需要我们创建，由redis自己维护</span></span><br><span class="line">cluster-config-file /tmp/6379/nodes.conf</span><br><span class="line"><span class="comment"># 节点心跳失败的超时时间</span></span><br><span class="line">cluster-node-timeout 5000</span><br><span class="line"><span class="comment"># 持久化文件存放目录</span></span><br><span class="line">dir /tmp/6379</span><br><span class="line"><span class="comment"># 绑定地址</span></span><br><span class="line">bind 0.0.0.0</span><br><span class="line"><span class="comment"># 让redis后台运行</span></span><br><span class="line">daemonize yes</span><br><span class="line"><span class="comment"># 注册的实例ip</span></span><br><span class="line">replica-announce-ip 192.168.150.101</span><br><span class="line"><span class="comment"># 保护模式</span></span><br><span class="line">protected-mode no</span><br><span class="line"><span class="comment"># 数据库数量</span></span><br><span class="line">databases 1</span><br><span class="line"><span class="comment"># 日志</span></span><br><span class="line">logfile /tmp/6379/run.log</span><br></pre></td></tr></table></figure>
+
+<p>将这个文件拷贝到每个目录下：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 进入/tmp目录</span></span><br><span class="line"><span class="built_in">cd</span> /tmp</span><br><span class="line"><span class="comment"># 执行拷贝</span></span><br><span class="line"><span class="built_in">echo</span> 7001 7002 7003 8001 8002 8003 | xargs -t -n 1 <span class="built_in">cp</span> redis.conf</span><br></pre></td></tr></table></figure>
+
+
+
+<p>修改每个目录下的redis.conf，将其中的6379修改为与所在目录一致：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 进入/tmp目录</span></span><br><span class="line"><span class="built_in">cd</span> /tmp</span><br><span class="line"><span class="comment"># 修改配置文件</span></span><br><span class="line"><span class="built_in">printf</span> <span class="string">&#x27;%s\n&#x27;</span> 7001 7002 7003 8001 8002 8003 | xargs -I&#123;&#125; -t sed -i <span class="string">&#x27;s/6379/&#123;&#125;/g&#x27;</span> &#123;&#125;/redis.conf</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="4-3-启动"><a href="#4-3-启动" class="headerlink" title="4.3.启动"></a>4.3.启动</h2><p>因为已经配置了后台启动模式，所以可以直接启动服务：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 进入/tmp目录</span></span><br><span class="line"><span class="built_in">cd</span> /tmp</span><br><span class="line"><span class="comment"># 一键启动所有服务</span></span><br><span class="line"><span class="built_in">printf</span> <span class="string">&#x27;%s\n&#x27;</span> 7001 7002 7003 8001 8002 8003 | xargs -I&#123;&#125; -t redis-server &#123;&#125;/redis.conf</span><br></pre></td></tr></table></figure>
+
+<p>通过ps查看状态：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -ef | grep redis</span><br></pre></td></tr></table></figure>
+
+<p>发现服务都已经正常启动：</p>
+
+
+
+
+<p>如果要关闭所有进程，可以执行命令：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -ef | grep redis | awk <span class="string">&#x27;&#123;print $2&#125;&#x27;</span> | xargs <span class="built_in">kill</span></span><br></pre></td></tr></table></figure>
+
+<p>或者（推荐这种方式）：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">printf</span> <span class="string">&#x27;%s\n&#x27;</span> 7001 7002 7003 8001 8002 8003 | xargs -I&#123;&#125; -t redis-cli -p &#123;&#125; shutdown</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="4-4-创建集群"><a href="#4-4-创建集群" class="headerlink" title="4.4.创建集群"></a>4.4.创建集群</h2><p>虽然服务启动了，但是目前每个服务之间都是独立的，没有任何关联。</p>
+<p>我们需要执行命令来创建集群，在Redis5.0之前创建集群比较麻烦，5.0之后集群管理命令都集成到了redis-cli中。</p>
+<p>1）Redis5.0之前</p>
+<p>Redis5.0之前集群命令都是用redis安装包下的src&#x2F;redis-trib.rb来实现的。因为redis-trib.rb是有ruby语言编写的所以需要安装ruby环境。</p>
+ <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装依赖</span></span><br><span class="line">yum -y install zlib ruby rubygems</span><br><span class="line">gem install redis</span><br></pre></td></tr></table></figure>
+
+
+
+<p>然后通过命令来管理集群：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 进入redis的src目录</span></span><br><span class="line"><span class="built_in">cd</span> /tmp/redis-6.2.4/src</span><br><span class="line"><span class="comment"># 创建集群</span></span><br><span class="line">./redis-trib.rb create --replicas 1 192.168.150.101:7001 192.168.150.101:7002 192.168.150.101:7003 192.168.150.101:8001 192.168.150.101:8002 192.168.150.101:8003</span><br></pre></td></tr></table></figure>
+
+
+
+<p>2）Redis5.0以后</p>
+<p>我们使用的是Redis6.2.4版本，集群管理以及集成到了redis-cli中，格式如下：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis-cli --cluster create --cluster-replicas 1 192.168.150.101:7001 192.168.150.101:7002 192.168.150.101:7003 192.168.150.101:8001 192.168.150.101:8002 192.168.150.101:8003</span><br></pre></td></tr></table></figure>
+
+<p>命令说明：</p>
+<ul>
+<li><code>redis-cli --cluster</code>或者<code>./redis-trib.rb</code>：代表集群操作命令</li>
+<li><code>create</code>：代表是创建集群</li>
+<li><code>--replicas 1</code>或者<code>--cluster-replicas 1</code> ：指定集群中每个master的副本个数为1，此时<code>节点总数 ÷ (replicas + 1)</code> 得到的就是master的数量。因此节点列表中的前n个就是master，其它节点都是slave节点，随机分配到不同master</li>
+</ul>
+<p>运行后的样子：</p>
+
+
+<p>这里输入yes，则集群开始创建：</p>
+
+
+
+
+<p>通过命令可以查看集群状态：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis-cli -p 7001 cluster nodes</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="4-5-测试"><a href="#4-5-测试" class="headerlink" title="4.5.测试"></a>4.5.测试</h2><p>尝试连接7001节点，存储一个数据：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 连接</span></span><br><span class="line">redis-cli -p 7001</span><br><span class="line"><span class="comment"># 存储数据</span></span><br><span class="line"><span class="built_in">set</span> num 123</span><br><span class="line"><span class="comment"># 读取数据</span></span><br><span class="line">get num</span><br><span class="line"><span class="comment"># 再次存储</span></span><br><span class="line"><span class="built_in">set</span> a 1</span><br></pre></td></tr></table></figure>
+
+<p>结果悲剧了：</p>
+
+
+<p>集群操作时，需要给<code>redis-cli</code>加上<code>-c</code>参数才可以：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis-cli -c -p 7001</span><br></pre></td></tr></table></figure>
+
+<p>这次可以了：</p>
+
+
+</div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">su</div><div class="author-info-description">苦行僧和初学者 弄不懂的谜语锁</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">1070</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">18</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/jay1247sjh"><i class="fab fa-github"></i><span>我的Github</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/jay1247sjh" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="https://space.bilibili.com/364753914" target="_blank" title="Bilibili"><i class="fa fa-book-open"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">这里是苏苏的个人空间😘</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/12/11/Algorithm/B%E6%A0%91/" title="B树">B树</a><time datetime="2024-12-11T15:41:52.000Z" title="发表于 2024-12-11 23:41:52">2024-12-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/12/11/Algorithm/Avl%E6%A0%91/" title="Avl树">Avl树</a><time datetime="2024-12-11T15:41:52.000Z" title="发表于 2024-12-11 23:41:52">2024-12-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/12/11/Algorithm/DFS%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/" title="DFS深度优先搜索">DFS深度优先搜索</a><time datetime="2024-12-11T15:41:52.000Z" title="发表于 2024-12-11 23:41:52">2024-12-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/12/11/Algorithm/%E4%B8%B2/" title="串">串</a><time datetime="2024-12-11T15:41:52.000Z" title="发表于 2024-12-11 23:41:52">2024-12-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/12/11/Algorithm/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" title="二分查找">二分查找</a><time datetime="2024-12-11T15:41:52.000Z" title="发表于 2024-12-11 23:41:52">2024-12-11</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>分类</span>
+            <a class="card-more-btn" href="/categories/" title="查看更多">
+      <i class="fas fa-angle-right"></i></a>
+          </div>
+          <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/AJAX/"><span class="card-category-list-name">AJAX</span><span class="card-category-list-count">81</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Android/"><span class="card-category-list-name">Android</span><span class="card-category-list-count">37</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Docker/"><span class="card-category-list-name">Docker</span><span class="card-category-list-count">8</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/HTML/"><span class="card-category-list-name">HTML</span><span class="card-category-list-count">8</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/JDBC/"><span class="card-category-list-name">JDBC</span><span class="card-category-list-count">6</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Java/"><span class="card-category-list-name">Java</span><span class="card-category-list-count">89</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/JavaScript/"><span class="card-category-list-name">JavaScript</span><span class="card-category-list-count">101</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/JavaWeb/"><span class="card-category-list-name">JavaWeb</span><span class="card-category-list-count">101</span></a></li>
+          </ul></div><div class="card-widget card-archives">
+    <div class="item-headline">
+      <i class="fas fa-archive"></i>
+      <span>归档</span>
+      
+    </div>
+    <ul class="card-archive-list">
+  
+      <li class="card-archive-list-item">
+        <a class="card-archive-list-link" href="/archives/2024/12/">
+          <span class="card-archive-list-date">十二月 2024</span>
+          <span class="card-archive-list-count">1070</span>
+        </a>
+      </li>
+    </ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站信息</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">1070</div></div><div class="webinfo-item"><div class="item-name">本站总字数 :</div><div class="item-count">323.4k</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总浏览量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2024-12-13T08:20:27.215Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2024 By su</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
