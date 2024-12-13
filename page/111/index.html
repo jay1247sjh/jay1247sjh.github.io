@@ -1,0 +1,198 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Space for Mr.su</title><meta name="author" content="su"><meta name="copyright" content="su"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="苦行僧和初学者 弄不懂的谜语锁">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Space for Mr.su">
+<meta property="og:url" content="http://localhost:4000/page/111/index.html">
+<meta property="og:site_name" content="Space for Mr.su">
+<meta property="og:description" content="苦行僧和初学者 弄不懂的谜语锁">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://localhost:4000/img/avatar.jpg">
+<meta property="article:author" content="su">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://localhost:4000/img/avatar.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://localhost:4000/page/111/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Space for Mr.su',
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isToc: false,
+  isShuoshuo: false
+}</script><link rel="stylesheet" href="/css/background.css"><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">1141</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">20</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> 生活</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/shuoshuo/"><i class="fa-fw fa fa-comments-o"></i><span> 分享</span></a></li><li><a class="site-page child" href="/photos/"><i class="fa-fw fa fa-camera-retro"></i><span> 相册</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 影视</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Space for Mr.su</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> 生活</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/shuoshuo/"><i class="fa-fw fa fa-comments-o"></i><span> 分享</span></a></li><li><a class="site-page child" href="/photos/"><i class="fa-fw fa fa-camera-retro"></i><span> 相册</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 影视</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="site-info"><h1 id="site-title">Space for Mr.su</h1><div id="site-subtitle"><span id="subtitle"></span></div><div id="site_social_icons"><a class="social-icon" href="https://github.com/jay1247sjh" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="https://space.bilibili.com/364753914" target="_blank" title="Bilibili"><i class="fa fa-book-open"></i></a></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts nc" id="recent-posts"><div class="recent-post-items"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/12/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E5%9B%BA%E6%80%81%E7%A1%AC%E7%9B%98SSD/" title="固态硬盘SSD">固态硬盘SSD</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-12-11T15:41:52.000Z" title="发表于 2024-12-11 23:41:52">2024-12-11</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">计算机组成原理</a></span></div><div class="content">  固态硬盘的读写是以页为单位的，机械磁盘的读写以块为单位 如果一个页写了数据，如果想再写数据就要把一整块给擦除了，但如果把原来的页的数据擦除了会造成数据丢失，所以会把原有的数据移动到其他页，并在新的页写入数据，并且对原有的逻辑块号重新进行映射（即重新编排地址），所以读比写快得多，写要经历擦除和数据迁移的动作   </div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/12/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/" title="存储系统基本概念">存储系统基本概念</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-12-11T15:41:52.000Z" title="发表于 2024-12-11 23:41:52">2024-12-11</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">计算机组成原理</a></span></div><div class="content">  Cache层主要是为了缓解主存与CPU间的速度矛盾 主存与辅存之间的交换是基于硬件+操作系统的 固态硬盘一般比机械硬盘读写速度更快    下面三种是根据位置去存取数据的，相联存储器是根据内容进行查找的 速度：顺序存取存储器&lt;直接存取存储器&lt;随机存取存储器     </div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/12/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E5%AE%9A%E7%82%B9%E5%B0%8F%E6%95%B0/" title="定点小数">定点小数</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-12-11T15:41:52.000Z" title="发表于 2024-12-11 23:41:52">2024-12-11</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">计算机组成原理</a></span></div><div class="content">  .前面的为符号位，代表正负    **定点小数，2^-1+2^-2+…+2^-n，根据等比数列的求和公式来算，得出来的结果为1-2^-n **     </div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/12/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E5%AE%9A%E7%82%B9%E6%95%B0%E7%9A%84%E7%A7%BB%E4%BD%8D%E8%AE%A1%E7%AE%97/" title="定点数的移位计算">定点数的移位计算</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-12-11T15:41:52.000Z" title="发表于 2024-12-11 23:41:52">2024-12-11</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">计算机组成原理</a></span></div><div class="content">  二进制右移相当于除2，当舍弃的位为1时，会丢失精度，因为1在的位置为2^-1，如果丢弃，相当于丢了0.5的精度 **定点小数同理 **  负数的反码要填1，因为是从原码的0转过来的  补码的补位方式，先找到原码的从右到左的第一个1，左移则在这个1右边补0，右移则在这个1左边补1（因为1的右边是跟反码一样的，转换为原码还是为0）     乘法运算把乘数拆分成2进制，再进行移位操作  计算机储存一种颜色是用一个B的长度来储存的，首先存入红色的8个bit位，然后再通过左移的方式，把红色的8个bit位从第八位移动到高八位，然后继续进下一种颜色，以此类推  循环左移便是向左移溢出的位会重新加入到第一位bit位 进位位的作用是记录溢出的位，以便计算机进行更高阶的计算，带进位位的循环左移就是把溢出的位假如到进位位，然后把进位位的数加入到开头  举例：对于2字节汉字“啊”，大端存储是先存放高字节再存放低字节，小端存储相反，这两者转换可以使用循环移位来实现，循环右移&#x2F;左移八位可以完成调换  </div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/12/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E5%B8%A6%E7%AC%A6%E5%8F%B7%E6%95%B4%E6%95%B0%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E8%BF%90%E7%AE%97/" title="带符号整数的表示和运算">带符号整数的表示和运算</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-12-11T15:41:52.000Z" title="发表于 2024-12-11 23:41:52">2024-12-11</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">计算机组成原理</a></span></div><div class="content">    最高位为0为正数，最高位为1为负数  负数有直接从原码转补码的方法，例如，1 0010011（第一位为符号位）可以直接按照以上规则转换为1 1101101;原码1 1100100转换为补码就是1 0011100  因为转换为反码之后，原来的0变成1，补码+1的规则会让其不断进位，直到遇到0为止，反码的0则是原码的1，所以补码右边开始数的第一个1都跟反码左边一样，右边跟原码保持一致 负数的补码转原码跟原码转补码的过程是一样的（符号位不变，数值位取反，末位+1）  超出位数的去除 补码数值位不能解读为“位权”   补码的负值转换有两种方法，一种是全部按位取反，然后末尾+1；另一种是从右往左找到第一个1，然后将左边的全部位按位取反。与负数原码求补码的区别是，这里补码转补码的是全部位按位取反，但负数原码求补码的是将数值位按位取反   </div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/12/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E5%B8%B8%E8%A7%81%E7%9A%84x86%E6%B1%87%E7%BC%96%E6%8C%87%E4%BB%A4/" title="常见的x86汇编指令">常见的x86汇编指令</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-12-11T15:41:52.000Z" title="发表于 2024-12-11 23:41:52">2024-12-11</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">计算机组成原理</a></span></div><div class="content"> div只有一个操作数，是因为被除数已经默认放到edx，使用隐含寻址找到 edx:eax表示两个寄存器一起用，除法进行时被除数会进行位扩展，比如32bit-&gt;64bit，高32bit放到edx，低32bit放到eax   x86不允许两个操作数都来自内存   </div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/12/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E5%B9%B6%E8%A1%8C%E8%BF%9B%E4%BD%8D%E5%8A%A0%E6%B3%95%E5%99%A8/" title="并行进位加法器">并行进位加法器</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-12-11T15:41:52.000Z" title="发表于 2024-12-11 23:41:52">2024-12-11</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">计算机组成原理</a></span></div><div class="content"> 经过上式的展开，可得知进位器是依靠前一位的进位计算得出结果的，但是想要知道结果必须首先知道前一位的进位结果，所以我们可以不断展开，直到得到C0，因为C0是一开始就知道的为0，所以根据展开的表达式计算进位甚至无需等待前一位进位计算的结果，就可以直接进行计算  把A与B记作G，把A异或B记作P，因为计算完第i位上的P和G之后，可以直接传到后面的器件进行进位的计算（根据表达式可以看出需要前面所有的P和G），这样可以很好地提高计算效率，但缺点是嵌套层次越高，所需的硬件资源也越高，一般来说是4位的并行进位的并行加法器 </div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/12/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E5%BC%BA%E5%88%B6%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2%E3%80%81%E6%95%B0%E6%8D%AE%E7%9A%84%E5%AD%98%E5%82%A8%E5%92%8C%E6%8E%92%E5%88%97/" title="强制类型转换、数据的存储和排列">强制类型转换、数据的存储和排列</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-12-11T15:41:52.000Z" title="发表于 2024-12-11 23:41:52">2024-12-11</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">计算机组成原理</a></span></div><div class="content"> 第一种情况，转换类型的bit位相等的时候，比如short转换为unsigned short（均为2字节），bit位是不会发生丢失的，但解释的方式会发生改变，unsigned的最高位是数值位（没有符号位），而signed的最高位是符号位，所以short的取值范围为-2^152^15，而unsigned short的取值范围为02^16-1 第二种情况，转换类型的bit位由大的转为小的时候，会发生高位截断的情况，比如上图的int（4字节）转化为short（2字节），则丢弃高位多出的2字节位  转化具体过程为上图，补码的10000000...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/12/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5%E7%9A%84%E6%9C%BA%E5%99%A8%E7%BA%A7%E8%A1%A8%E7%A4%BA/" title="循环语句的机器级表示">循环语句的机器级表示</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-12-11T15:41:52.000Z" title="发表于 2024-12-11 23:41:52">2024-12-11</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">计算机组成原理</a></span></div><div class="content">   loop指令用的只能是exc寄存器，ZF是0标志位 </div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/12/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E5%BE%AE%E6%8C%87%E4%BB%A4%E7%9A%84%E8%AE%BE%E8%AE%A1/" title="微指令的设计">微指令的设计</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-12-11T15:41:52.000Z" title="发表于 2024-12-11 23:41:52">2024-12-11</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">计算机组成原理</a></span></div><div class="content">    互斥的微命令放到同一个段，这样一个段只能表示一种状态，就达成了互斥的效果了        </div></div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/page/110/#content-inner"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/110/#content-inner">110</a><span class="page-number current">111</span><a class="page-number" href="/page/112/#content-inner">112</a><span class="space">&hellip;</span><a class="page-number" href="/page/115/#content-inner">115</a><a class="extend next" rel="next" href="/page/112/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">su</div><div class="author-info-description">苦行僧和初学者 弄不懂的谜语锁</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">1141</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">20</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/jay1247sjh"><i class="fab fa-github"></i><span>我的Github</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/jay1247sjh" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="https://space.bilibili.com/364753914" target="_blank" title="Bilibili"><i class="fa fa-book-open"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">这里是苏苏的个人空间😘</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/12/11/Algorithm/B%E6%A0%91/" title="B树">B树</a><time datetime="2024-12-11T15:41:52.000Z" title="发表于 2024-12-11 23:41:52">2024-12-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/12/11/Algorithm/Avl%E6%A0%91/" title="Avl树">Avl树</a><time datetime="2024-12-11T15:41:52.000Z" title="发表于 2024-12-11 23:41:52">2024-12-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/12/11/Algorithm/DFS%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/" title="DFS深度优先搜索">DFS深度优先搜索</a><time datetime="2024-12-11T15:41:52.000Z" title="发表于 2024-12-11 23:41:52">2024-12-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/12/11/Algorithm/%E4%B8%B2/" title="串">串</a><time datetime="2024-12-11T15:41:52.000Z" title="发表于 2024-12-11 23:41:52">2024-12-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/12/11/Algorithm/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" title="二分查找">二分查找</a><time datetime="2024-12-11T15:41:52.000Z" title="发表于 2024-12-11 23:41:52">2024-12-11</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>分类</span>
+            <a class="card-more-btn" href="/categories/" title="查看更多">
+      <i class="fas fa-angle-right"></i></a>
+          </div>
+          <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/AJAX/"><span class="card-category-list-name">AJAX</span><span class="card-category-list-count">81</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Android/"><span class="card-category-list-name">Android</span><span class="card-category-list-count">37</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Docker/"><span class="card-category-list-name">Docker</span><span class="card-category-list-count">8</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/HTML/"><span class="card-category-list-name">HTML</span><span class="card-category-list-count">8</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/JDBC/"><span class="card-category-list-name">JDBC</span><span class="card-category-list-count">6</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Java/"><span class="card-category-list-name">Java</span><span class="card-category-list-count">89</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/JavaScript/"><span class="card-category-list-name">JavaScript</span><span class="card-category-list-count">101</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/JavaWeb/"><span class="card-category-list-name">JavaWeb</span><span class="card-category-list-count">101</span></a></li>
+          </ul></div><div class="card-widget card-archives">
+    <div class="item-headline">
+      <i class="fas fa-archive"></i>
+      <span>归档</span>
+      
+    </div>
+    <ul class="card-archive-list">
+  
+      <li class="card-archive-list-item">
+        <a class="card-archive-list-link" href="/archives/2024/12/">
+          <span class="card-archive-list-date">十二月 2024</span>
+          <span class="card-archive-list-count">1141</span>
+        </a>
+      </li>
+    </ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站信息</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">1141</div></div><div class="webinfo-item"><div class="item-name">本站总字数 :</div><div class="item-count">340.4k</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总浏览量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2024-12-13T10:07:26.494Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2024 By su</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>window.typedJSFn = {
+  init: str => {
+    window.typed = new Typed('#subtitle', Object.assign({
+      strings: str,
+      startDelay: 300,
+      typeSpeed: 150,
+      loop: true,
+      backSpeed: 50,
+    }, null))
+  },
+  run: subtitleType => {
+    if (true) {
+      if (typeof Typed === 'function') {
+        subtitleType()
+      } else {
+        btf.getScript('https://cdn.jsdelivr.net/npm/typed.js/dist/typed.umd.min.js').then(subtitleType)
+      }
+    } else {
+      subtitleType()
+    }
+  }
+}
+btf.addGlobalFn('pjaxSendOnce', () => { typed.destroy() }, 'typedDestroy')
+</script><script>function subtitleType () {
+  if (true) {
+    typedJSFn.init(["等到黑夜翻面之后会是新的白昼 等到海啸退去之后只是潮起潮落","不要到最后才发觉心里头的野兽 还没到最终就已经罢休","别逃避我们以后要做的事情 多些幻想少一些犹豫的途径","路不该是疑问句 要比谁都清晰","出发就走得到 来时路不会被剪断"])
+  } else {
+    document.getElementById("subtitle").textContent = "等到黑夜翻面之后会是新的白昼 等到海啸退去之后只是潮起潮落"
+  }
+}
+typedJSFn.run(subtitleType)</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

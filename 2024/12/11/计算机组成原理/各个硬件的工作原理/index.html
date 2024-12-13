@@ -1,0 +1,175 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>各个硬件的工作原理 | Space for Mr.su</title><meta name="author" content="su"><meta name="copyright" content="su"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="CPU先把想要获取数据的位置先交给MAR，MAR根据位置去存储体中拿出相应数据，然后交予MDR，CPU从MDR中取走想要的数据 CPU也可以写入数据，CPU会给MAR指明想要写入的位置，然后将写入数据放到MDR，最后CPU会通过控制总线告诉主存储器要执行什么操作，这就完成了相应位置写数据的操作  存储字长一般为8bit的整数倍，如8、16、32、64之类的 如果一个MAR有4位，则二进制代码只能">
+<meta property="og:type" content="article">
+<meta property="og:title" content="各个硬件的工作原理">
+<meta property="og:url" content="http://localhost:4000/2024/12/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E5%90%84%E4%B8%AA%E7%A1%AC%E4%BB%B6%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/index.html">
+<meta property="og:site_name" content="Space for Mr.su">
+<meta property="og:description" content="CPU先把想要获取数据的位置先交给MAR，MAR根据位置去存储体中拿出相应数据，然后交予MDR，CPU从MDR中取走想要的数据 CPU也可以写入数据，CPU会给MAR指明想要写入的位置，然后将写入数据放到MDR，最后CPU会通过控制总线告诉主存储器要执行什么操作，这就完成了相应位置写数据的操作  存储字长一般为8bit的整数倍，如8、16、32、64之类的 如果一个MAR有4位，则二进制代码只能">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://localhost:4000/img/avatar.jpg">
+<meta property="article:published_time" content="2024-12-11T15:41:52.000Z">
+<meta property="article:modified_time" content="2024-12-13T10:03:54.568Z">
+<meta property="article:author" content="su">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://localhost:4000/img/avatar.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://localhost:4000/2024/12/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E5%90%84%E4%B8%AA%E7%A1%AC%E4%BB%B6%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '各个硬件的工作原理',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: false,
+  isShuoshuo: false
+}</script><link rel="stylesheet" href="/css/background.css"><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">1141</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">20</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> 生活</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/shuoshuo/"><i class="fa-fw fa fa-comments-o"></i><span> 分享</span></a></li><li><a class="site-page child" href="/photos/"><i class="fa-fw fa fa-camera-retro"></i><span> 相册</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 影视</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Space for Mr.su</span></a><a class="nav-page-title" href="/"><span class="site-name">各个硬件的工作原理</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> 生活</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/shuoshuo/"><i class="fa-fw fa fa-comments-o"></i><span> 分享</span></a></li><li><a class="site-page child" href="/photos/"><i class="fa-fw fa fa-camera-retro"></i><span> 相册</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 影视</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">各个硬件的工作原理</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-12-11T15:41:52.000Z" title="发表于 2024-12-11 23:41:52">2024-12-11</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-12-13T10:03:54.568Z" title="更新于 2024-12-13 18:03:54">2024-12-13</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">计算机组成原理</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">770</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>2分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p><img src="/images/WEBRESOURCE6365cbbe88ed0bce203c5e87d32b49ba%E6%88%AA%E5%9B%BE.png"></p>
+<p><strong>CPU先把想要获取数据的位置先交给MAR，MAR根据位置去存储体中拿出相应数据，然后交予MDR，CPU从MDR中取走想要的数据</strong></p>
+<p><strong>CPU也可以写入数据，CPU会给MAR指明想要写入的位置，然后将写入数据放到MDR，最后CPU会通过控制总线告诉主存储器要执行什么操作，这就完成了相应位置写数据的操作</strong></p>
+<p><img src="/images/WEBRESOURCEf02f6f5973e31ef9969f735e23b3be4e%E6%88%AA%E5%9B%BE.png"></p>
+<p><strong>存储字长一般为8bit的整数倍，如8、16、32、64之类的</strong></p>
+<p><strong>如果一个MAR有4位，则二进制代码只能有16位，0000-1111，说明存储体中最多含有16个存储单元</strong></p>
+<p><strong>如果一个MDR可以存放16位，则说明一个存储字大小为16bit，可以存放16个二进制的信息（一个存储字的字长跟计算机CPU的位数有关）</strong></p>
+<p><img src="/images/WEBRESOURCE7e22ba4afd99ae4429f89cf478681280%E6%88%AA%E5%9B%BE.png"></p>
+<p><strong>ACC和MQ通常被用来表示计算机中的硬件寄存器，它们不是用于进行运算的。ACC（Accumulator，累加器）是一种特殊的寄存器，用于存储运算结果或中间结果。MQ（Multiplier Quotient，乘法器商）是一种在乘法运算中用于存储商的寄存器。这些寄存器被用于存储数据，在计算过程中进行传输和保存，而不直接进行数值运算</strong></p>
+<p><img src="/images/WEBRESOURCE09356cc585e41a4934a7a9d3178c804e%E6%88%AA%E5%9B%BE.png"></p>
+<hr>
+<p><strong>计算机工作过程</strong></p>
+<p><img src="/images/WEBRESOURCEf59aec25eba5b6bfbd6f45d1ebd3e7cb%E6%88%AA%E5%9B%BE.png"></p>
+<p><strong>前四步记录操作码和地址码，加起来是16个bit位，下面的变量指令也是16个bit位。计算机会自动拆分一个存储单元放置操作码和地址码</strong></p>
+<p><img src="/images/WEBRESOURCE8630088d0c8af893612d4286ff4e690f%E6%88%AA%E5%9B%BE.png"></p>
+<p><strong>CPU中的PC初始化位0，并且通过总线传送到MAR，MAP拿着0去主存地址0访问对应的数据，并且控制器会通过总线传输到主存储器相关指令，然后主存储器会读取MAR中的主存地址去存储体中找出相应位置的二进制信息，然后放到MDR中，MDR中的数据会通过数据总线放到IR中，IR中前6个bit的操作码会被送到CU，CU解析后得知操作码是“取数”，然后控制IR把地址码（101转换为十进制为5）放到MAR当中，然后主存储器根据MAR中的5去存储体当中寻找5号主存地址的数据，然后放入MDR，MDR中数据的会放在ACC寄存器中</strong></p>
+<p><strong>在取指令的操作完成后，PC会自动+1</strong></p>
+<p><img src="/images/WEBRESOURCE2a6dbecf272a3deefe61da2a9ece20e7%E6%88%AA%E5%9B%BE.png"></p>
+<p><strong>因为b中的数是乘数，所以要放到MQ当中，让ACC中的数放到X中（一般来说ACC存储被加数，通用寄存器存入加数），然后通过ALU进行运算，把结果放入ACC中（如果数很大，ACC存不下，会使用MQ辅助存储，MQ通常存储运算结果的低位（低位部分（Low Order Part）通常指一个数字或者数值的最低位或最小位））</strong></p>
+<p><img src="/images/WEBRESOURCEdb0ca70920a421e52eb8f7fef0047191%E6%88%AA%E5%9B%BE.png"></p>
+<hr>
+<p><img src="/images/WEBRESOURCE5db70b0353ac07ca372dcdec6eeb4cf6%E6%88%AA%E5%9B%BE.png"></p>
+<p><strong>这一步的指令是“存数”，把ACC的存储结果通过总线放入MDR，存储器然后根据MAR地址值把MDR的数据放入存储体中</strong></p>
+<p><img src="/images/WEBRESOURCEa3513ad8e07f13afde7379eded5f4aba%E6%88%AA%E5%9B%BE.png"></p>
+<p><img src="/images/WEBRESOURCEfacca678b87964c03033c4bee22fe987%E6%88%AA%E5%9B%BE.png"></p>
+<p><img src="/images/WEBRESOURCE9e7ca49e14dc21ff734d2ec10133a41a%E6%88%AA%E5%9B%BE.png"></p>
+<p><img src="/images/WEBRESOURCE80c8bafe759965f24beece5d1cdf3b89%E6%88%AA%E5%9B%BE.png"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://localhost:4000">su</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://localhost:4000/2024/12/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E5%90%84%E4%B8%AA%E7%A1%AC%E4%BB%B6%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/">http://localhost:4000/2024/12/11/计算机组成原理/各个硬件的工作原理/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://localhost:4000" target="_blank">Space for Mr.su</a>！</span></div></div><div class="tag_share"><div class="post-share"><div class="social-share" data-image="/img/avatar.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i>赞助</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.png" target="_blank"><img class="post-qr-code-img" src="/img/wechat.png" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li></ul></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2024/12/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E5%8F%AA%E8%AF%BB%E5%AD%98%E5%82%A8%E5%99%A8/" title="只读存储器"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">只读存储器</div></div><div class="info-2"><div class="info-item-1">  RAM一般指内存，ROM一般指辅存 只读存储器不是指只能读数据的存储器，同时还可以进行写入  右下角是BIOS界面  通常把BIOS看作主存的一部分 RAM+ROM统一编址的意思是，假如ROM的容量是1KB，那么CPU会把0~1023这个地址分配到ROM这里，RAM以1024地址开始接着往后编址  ROM也是有随机存取的特性，对于一个ROM芯片，给定一个存储单元的地址，访问的时候并不会受存储单元的地址所影响 </div></div></div></a><a class="pagination-related" href="/2024/12/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E5%A5%87%E5%81%B6%E6%A0%A1%E9%AA%8C%E7%A0%81/" title="奇偶校验码"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">奇偶校验码</div></div><div class="info-2"><div class="info-item-1"> 假如从一台设备传输信号到另一台设备，传输的信号是B（01），但由于传输过程中由于某种信号的干扰导致产生位错误，最后的信号可能变为00，而00恰好又对应上A，就会产生错误的结果 解决的方法是在编码前面设定一个奇偶校验位  假如余7位是信息位。奇校验则是查看7个bit位有多少个是1，如果是偶数个则补上1，如果是奇数则补个0；偶校验相反，如果是7个bit位有偶数个1则补0，否则补1 奇偶校验码的校验过程是这样的，当传输数据的过程中出现1个bit位的跳位，由0变成1或是由1变成0，都会影响信息中1的数量，如果发现1的数量和奇&#x2F;偶校验不匹配，则说明出现错误  把所有的信息位进行异或运算，最后的出的结果就是偶校验的奇偶校验位要填写的结果 因为正确的偶校验码必然有偶数个bit位是1，所以异或的结果必然是0，如果不是0，则必定出错 但如果得出的结果是0，也未必没有发生位错误，因为假如两个bit位的1同时变为0，得到的偶校验结果也是0，但很明显此时出现了位错误 </div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">su</div><div class="author-info-description">苦行僧和初学者 弄不懂的谜语锁</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">1141</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">20</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/jay1247sjh"><i class="fab fa-github"></i><span>我的Github</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/jay1247sjh" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="https://space.bilibili.com/364753914" target="_blank" title="Bilibili"><i class="fa fa-book-open"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">这里是苏苏的个人空间😘</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/12/11/Algorithm/B%E6%A0%91/" title="B树">B树</a><time datetime="2024-12-11T15:41:52.000Z" title="发表于 2024-12-11 23:41:52">2024-12-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/12/11/Algorithm/Avl%E6%A0%91/" title="Avl树">Avl树</a><time datetime="2024-12-11T15:41:52.000Z" title="发表于 2024-12-11 23:41:52">2024-12-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/12/11/Algorithm/DFS%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/" title="DFS深度优先搜索">DFS深度优先搜索</a><time datetime="2024-12-11T15:41:52.000Z" title="发表于 2024-12-11 23:41:52">2024-12-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/12/11/Algorithm/%E4%B8%B2/" title="串">串</a><time datetime="2024-12-11T15:41:52.000Z" title="发表于 2024-12-11 23:41:52">2024-12-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/12/11/Algorithm/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" title="二分查找">二分查找</a><time datetime="2024-12-11T15:41:52.000Z" title="发表于 2024-12-11 23:41:52">2024-12-11</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2024 By su</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

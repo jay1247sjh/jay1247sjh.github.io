@@ -1,0 +1,198 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Space for Mr.su</title><meta name="author" content="su"><meta name="copyright" content="su"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="苦行僧和初学者 弄不懂的谜语锁">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Space for Mr.su">
+<meta property="og:url" content="http://localhost:4000/page/109/index.html">
+<meta property="og:site_name" content="Space for Mr.su">
+<meta property="og:description" content="苦行僧和初学者 弄不懂的谜语锁">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://localhost:4000/img/avatar.jpg">
+<meta property="article:author" content="su">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://localhost:4000/img/avatar.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://localhost:4000/page/109/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Space for Mr.su',
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isToc: false,
+  isShuoshuo: false
+}</script><link rel="stylesheet" href="/css/background.css"><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">1141</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">20</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> 生活</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/shuoshuo/"><i class="fa-fw fa fa-comments-o"></i><span> 分享</span></a></li><li><a class="site-page child" href="/photos/"><i class="fa-fw fa fa-camera-retro"></i><span> 相册</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 影视</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Space for Mr.su</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> 生活</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/shuoshuo/"><i class="fa-fw fa fa-comments-o"></i><span> 分享</span></a></li><li><a class="site-page child" href="/photos/"><i class="fa-fw fa fa-camera-retro"></i><span> 相册</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 影视</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="site-info"><h1 id="site-title">Space for Mr.su</h1><div id="site-subtitle"><span id="subtitle"></span></div><div id="site_social_icons"><a class="social-icon" href="https://github.com/jay1247sjh" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="https://space.bilibili.com/364753914" target="_blank" title="Bilibili"><i class="fa fa-book-open"></i></a></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts nc" id="recent-posts"><div class="recent-post-items"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/12/11/%E6%B1%87%E7%BC%96/ss-sp%E5%AF%84%E5%AD%98%E5%99%A8%E3%80%81%E6%A0%88%E7%9A%84push%E3%80%81pop%E6%8C%87%E4%BB%A4/" title="ss-sp寄存器、栈的push、pop指令">ss-sp寄存器、栈的push、pop指令</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-12-11T15:41:52.000Z" title="发表于 2024-12-11 23:41:52">2024-12-11</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%B1%87%E7%BC%96/">汇编</a></span></div><div class="content"> 栈小地址在上，大地址在下  给1000:0000地址修改为AB，1000:0001地址修改为CD，再存入AX寄存器，发现为CDAB，因为CD是在高位的  当我赋值1247给ax寄存器并push的时候，发现sp寄存器的地址改变了，说明栈顶指针发生移动  当我查看相应栈区的位置范围时，发现确实存在1247  pop是把栈顶元素赋值给相应寄存器  如果超出栈底的位置了，继续pop的话值就是读取栈外的内存了  push 1000:0000的内存地址的值给1000:0012（ss:sp）  pop也是一样的，在相应内存位置写入栈顶数据 </div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/12/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/CPU%E7%9A%84%E5%8A%9F%E8%83%BD%E5%92%8C%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84/" title="CPU的功能和基本结构">CPU的功能和基本结构</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-12-11T15:41:52.000Z" title="发表于 2024-12-11 23:41:52">2024-12-11</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">计算机组成原理</a></span></div><div class="content">      IR是指令寄存器  </div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/12/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/Cache%E4%B8%8E%E4%B8%BB%E5%AD%98%E7%9A%84%E6%98%A0%E5%B0%84%E5%85%B3%E7%B3%BB/" title="Cache与主存的映射关系">Cache与主存的映射关系</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-12-11T15:41:52.000Z" title="发表于 2024-12-11 23:41:52">2024-12-11</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">计算机组成原理</a></span></div><div class="content"> Cache中每个存储块会记录有效位+标记，因为计算机中存储主存的标号是用二进制记录的，那么刚开始会被初始化为全0，有效位为1的才表明相应存储单元有效   直接映射的方式类似于哈希表的映射，缺点是不能选择Cache其余空闲的内存块进行存储 实际上存储的标记是可以进行优化的，假如Cache的行是2^n的行数，那么用主存块地址对Cache行数量进行取余就是去22位的前n位数，那么标记就只需要存前面的19位数，到时候再组合一下Cache行的位置，就可以找到主存相应的位置了   </div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/12/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/Cache%E5%86%99%E7%AD%96%E7%95%A5/" title="Cache写策略">Cache写策略</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-12-11T15:41:52.000Z" title="发表于 2024-12-11 23:41:52">2024-12-11</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">计算机组成原理</a></span></div><div class="content"> 写回法需要一个脏位来标记该Cache块中的数据是否被修改过   可以增加一个写缓冲，用来暂存修改的数据     任务管理器可以看到多级Cache的容量  </div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/12/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/Cache%E6%9B%BF%E6%8D%A2%E7%AE%97%E6%B3%95/" title="Cache替换算法">Cache替换算法</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-12-11T15:41:52.000Z" title="发表于 2024-12-11 23:41:52">2024-12-11</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">计算机组成原理</a></span></div><div class="content">  当在主存块中访问的数据在Cache中没有的时候，会先把数据放入Cache，此时如果Cache块都被占满了就会随机替换掉Cache中的某个块，放入新的数据  就像是队列的先进先出，如果Cache占满了数据，但又想加入新的数据，就会先覆盖最先放入Cache块的数据  ** 如果使用LRU算法，除了标志和有效位还要额外记录一个计数器，用于统计未被访问次数** 至于第一条，比命中行计数器大的不用变化，因为计数器存在的目的就是为了统计未被访问的次数，4个Cache块的计数器的范围只有0~3，再继续往上加是没有意义的，不加也能实现相同的效果，即选出最久未被访问的Cache块 Cache块的总数则计数器 &#x3D; 2^n，只需n位。且Cache装满后所有计数器的值一定不重复   若有多个计数器最小的行可按行号递增或FIFO策路进行选择 采用这个算法需要的计数器一般来说会比LRU所需bit位更多，并且并不怎么遵循时间局限性   </div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/12/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/SRAM%E5%92%8CDRAM/" title="SRAM和DRAM">SRAM和DRAM</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-12-11T15:41:52.000Z" title="发表于 2024-12-11 23:41:52">2024-12-11</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">计算机组成原理</a></span></div><div class="content">  BL和BLX是两根数据线。当存储的是0的时候，BL输出低电平，BLX不输出任何信号；当存储的是1，BLX输出低电平，BL不输出任何电信号 栅极电容读取数据的时候是破坏性读出，本来电容中是有电荷的，当MOS管被接通的时候，会进行放电操作，如果需要恢复原来的数据还需要重写   SRAM来说性能更高，因为不需要刷新，但集成度更低（物理硬件更大） 刷新是由存储器独立完成的，不需要CPU控制   当给译码器传入n位bit的地址的时候，会有2^n根通线，很明显这个数量是十分庞大的，于是可以将地址线拆分成二维的方式，这样就可以做到一个维度负责2^(n&#x2F;2)条通线，比如图中的地址0000...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/12/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/IEEE%20754%EF%BC%88I%20triple%20E%EF%BC%89/" title="IEEE 754（I triple E）">IEEE 754（I triple E）</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-12-11T15:41:52.000Z" title="发表于 2024-12-11 23:41:52">2024-12-11</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">计算机组成原理</a></span></div><div class="content">  移码的偏置值除了2^n-1次方还可以有其他的标准，如果以这个标准的话，原码真值+偏置值就为移码，以2^n-1次方为偏置值求移码，就是将补码的符号位取反就可以了  移码全1表示-128，全0表示-127 127-128那段转化为原码的计算如下图，在最高位补1（+2^8）不会影响计算结果   IEEE标准中规定8位偏置值为127且尾数用原码表示，还知道了移码&#x3D;偏置值+真值，那么 阶码真值&#x3D;移码-偏置值(127)，知道了偏置值之后，就可以根据之前的方法求解真值了（或许把移码用无符号数的形式来解释，比如0…011转化为无符号数就是3，3-127&#x3D;124就是阶码） ms是数符，决定该真值的正负性 因为数符移到了最前面，然后原码中数值位的最高位规格化后为1，所以索性就把1省略，保留了1后面所有的尾数，原来的应该是ms.1M，现在ms放最前面，就变成了1M，只存储M（计算机隐含了1），可以存储更多位数  ** 因为是负数，所以数符为1，位数部分去掉小数点前的1，只填小数点后的数字**  C0 A0 00...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/12/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E7%9A%84%E6%9C%BA%E5%99%A8%E7%BA%A7%E8%A1%A8%E7%A4%BA/" title="函数调用的机器级表示">函数调用的机器级表示</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-12-11T15:41:52.000Z" title="发表于 2024-12-11 23:41:52">2024-12-11</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">计算机组成原理</a></span></div><div class="content">   </div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/12/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E4%B8%BB%E5%AD%98%E5%82%A8%E5%99%A8%E4%B8%8ECPU%E7%9A%84%E8%BF%9E%E6%8E%A5/" title="主存储器与CPU的连接">主存储器与CPU的连接</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-12-11T15:41:52.000Z" title="发表于 2024-12-11 23:41:52">2024-12-11</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">计算机组成原理</a></span></div><div class="content"> 一般都使总线宽度等于存储字长，这样一次能处理更多数据  现在的计算机一般把MDR和MAR放在CPU中，MAR通过地址总线向主存传输地址   可以看到CPU有D0到D7有个数据总线，但主存这个存储芯片有8K个1bit位的存储单元，那么CPU就只能接每个存储单元的1个bit位，那么剩下的7个数据线的bit位就浪费了，解决方法是用更多的一些有8K个存储单元的存储芯片，地址总线同时接所有存储条的地址接口（A0~A12为13根地址线，因为8K &#x3D;...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/12/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E4%BC%A0%E9%80%92%E5%8F%82%E6%95%B0%E5%92%8C%E8%BF%94%E5%9B%9E%E5%80%BC/" title="传递参数和返回值">传递参数和返回值</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-12-11T15:41:52.000Z" title="发表于 2024-12-11 23:41:52">2024-12-11</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">计算机组成原理</a></span></div><div class="content">   将运算的结果存入eax寄存器，ret就获取IP旧址继续执行    </div></div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/page/108/#content-inner"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/108/#content-inner">108</a><span class="page-number current">109</span><a class="page-number" href="/page/110/#content-inner">110</a><span class="space">&hellip;</span><a class="page-number" href="/page/115/#content-inner">115</a><a class="extend next" rel="next" href="/page/110/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">su</div><div class="author-info-description">苦行僧和初学者 弄不懂的谜语锁</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">1141</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">20</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/jay1247sjh"><i class="fab fa-github"></i><span>我的Github</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/jay1247sjh" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="https://space.bilibili.com/364753914" target="_blank" title="Bilibili"><i class="fa fa-book-open"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">这里是苏苏的个人空间😘</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/12/11/Algorithm/B%E6%A0%91/" title="B树">B树</a><time datetime="2024-12-11T15:41:52.000Z" title="发表于 2024-12-11 23:41:52">2024-12-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/12/11/Algorithm/Avl%E6%A0%91/" title="Avl树">Avl树</a><time datetime="2024-12-11T15:41:52.000Z" title="发表于 2024-12-11 23:41:52">2024-12-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/12/11/Algorithm/DFS%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/" title="DFS深度优先搜索">DFS深度优先搜索</a><time datetime="2024-12-11T15:41:52.000Z" title="发表于 2024-12-11 23:41:52">2024-12-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/12/11/Algorithm/%E4%B8%B2/" title="串">串</a><time datetime="2024-12-11T15:41:52.000Z" title="发表于 2024-12-11 23:41:52">2024-12-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/12/11/Algorithm/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" title="二分查找">二分查找</a><time datetime="2024-12-11T15:41:52.000Z" title="发表于 2024-12-11 23:41:52">2024-12-11</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>分类</span>
+            <a class="card-more-btn" href="/categories/" title="查看更多">
+      <i class="fas fa-angle-right"></i></a>
+          </div>
+          <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/AJAX/"><span class="card-category-list-name">AJAX</span><span class="card-category-list-count">81</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Android/"><span class="card-category-list-name">Android</span><span class="card-category-list-count">37</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Docker/"><span class="card-category-list-name">Docker</span><span class="card-category-list-count">8</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/HTML/"><span class="card-category-list-name">HTML</span><span class="card-category-list-count">8</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/JDBC/"><span class="card-category-list-name">JDBC</span><span class="card-category-list-count">6</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Java/"><span class="card-category-list-name">Java</span><span class="card-category-list-count">89</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/JavaScript/"><span class="card-category-list-name">JavaScript</span><span class="card-category-list-count">101</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/JavaWeb/"><span class="card-category-list-name">JavaWeb</span><span class="card-category-list-count">101</span></a></li>
+          </ul></div><div class="card-widget card-archives">
+    <div class="item-headline">
+      <i class="fas fa-archive"></i>
+      <span>归档</span>
+      
+    </div>
+    <ul class="card-archive-list">
+  
+      <li class="card-archive-list-item">
+        <a class="card-archive-list-link" href="/archives/2024/12/">
+          <span class="card-archive-list-date">十二月 2024</span>
+          <span class="card-archive-list-count">1141</span>
+        </a>
+      </li>
+    </ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站信息</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">1141</div></div><div class="webinfo-item"><div class="item-name">本站总字数 :</div><div class="item-count">340.4k</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总浏览量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2024-12-13T10:07:26.494Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2024 By su</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>window.typedJSFn = {
+  init: str => {
+    window.typed = new Typed('#subtitle', Object.assign({
+      strings: str,
+      startDelay: 300,
+      typeSpeed: 150,
+      loop: true,
+      backSpeed: 50,
+    }, null))
+  },
+  run: subtitleType => {
+    if (true) {
+      if (typeof Typed === 'function') {
+        subtitleType()
+      } else {
+        btf.getScript('https://cdn.jsdelivr.net/npm/typed.js/dist/typed.umd.min.js').then(subtitleType)
+      }
+    } else {
+      subtitleType()
+    }
+  }
+}
+btf.addGlobalFn('pjaxSendOnce', () => { typed.destroy() }, 'typedDestroy')
+</script><script>function subtitleType () {
+  if (true) {
+    typedJSFn.init(["等到黑夜翻面之后会是新的白昼 等到海啸退去之后只是潮起潮落","不要到最后才发觉心里头的野兽 还没到最终就已经罢休","别逃避我们以后要做的事情 多些幻想少一些犹豫的途径","路不该是疑问句 要比谁都清晰","出发就走得到 来时路不会被剪断"])
+  } else {
+    document.getElementById("subtitle").textContent = "等到黑夜翻面之后会是新的白昼 等到海啸退去之后只是潮起潮落"
+  }
+}
+typedJSFn.run(subtitleType)</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
